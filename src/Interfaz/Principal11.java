@@ -5,6 +5,8 @@
  */
 package Interfaz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author sony
@@ -53,6 +55,12 @@ public class Principal11 extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Traditional Arabic", 2, 24)); // NOI18N
         jLabel2.setText("Monto Presupuestal");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 220, -1));
+
+        txtMonto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMontoKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtMonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 110, 30));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 400, 10));
 
@@ -120,6 +128,13 @@ public class Principal11 extends javax.swing.JFrame {
     String gin,tra,ped;
     int presupuesto,ginecologia,traumatologia,pediatria;
     
+    if(txtMonto.getText().isEmpty()){
+     getToolkit().beep();
+     JOptionPane.showMessageDialog(this, "Digite El Monto Presupuestal ","Error",JOptionPane.ERROR_MESSAGE);
+     txtMonto.requestFocusInWindow();
+     }
+    else{
+       
     presupuesto= Integer.parseInt(txtMonto.getText());
     
     ginecologia= (presupuesto*40)/100;
@@ -134,6 +149,7 @@ public class Principal11 extends javax.swing.JFrame {
     txtTraumatologia.setText(tra);
     txtPediatria.setText(ped);
     
+    }
     }//GEN-LAST:event_cmdCalcularActionPerformed
 
     private void cmdBorraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorraActionPerformed
@@ -143,6 +159,14 @@ public class Principal11 extends javax.swing.JFrame {
     txtPediatria.setText("");    
     txtMonto.requestFocusInWindow();
     }//GEN-LAST:event_cmdBorraActionPerformed
+
+    private void txtMontoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMontoKeyTyped
+    char c=evt.getKeyChar(); 
+     if(!Character.isDigit(c)) { 
+              getToolkit().beep();  
+              evt.consume();
+          }    
+    }//GEN-LAST:event_txtMontoKeyTyped
 
     /**
      * @param args the command line arguments
