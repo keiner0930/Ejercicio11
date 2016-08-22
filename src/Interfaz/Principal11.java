@@ -83,9 +83,19 @@ public class Principal11 extends javax.swing.JFrame {
         jPanel1.add(txtPediatria, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 90, 30));
 
         cmdCalcular.setText("Calcular");
+        cmdCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCalcularActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, -1, -1));
 
         cmdBorra.setText("Borrar");
+        cmdBorra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdBorraActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmdBorra, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -105,6 +115,34 @@ public class Principal11 extends javax.swing.JFrame {
     private void txtGinecologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGinecologiaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtGinecologiaActionPerformed
+
+    private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
+    String gin,tra,ped;
+    int presupuesto,ginecologia,traumatologia,pediatria;
+    
+    presupuesto= Integer.parseInt(txtMonto.getText());
+    
+    ginecologia= (presupuesto*40)/100;
+    traumatologia= (presupuesto*30)/100;
+    pediatria= (presupuesto*30)/100;
+    
+    gin= String.valueOf(ginecologia);
+    tra= String.valueOf(traumatologia);
+    ped= String.valueOf(pediatria);
+    
+    txtGinecologia.setText(gin);
+    txtTraumatologia.setText(tra);
+    txtPediatria.setText(ped);
+    
+    }//GEN-LAST:event_cmdCalcularActionPerformed
+
+    private void cmdBorraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorraActionPerformed
+    txtMonto.setText("");
+    txtGinecologia.setText("");
+    txtTraumatologia.setText("");
+    txtPediatria.setText("");    
+    txtMonto.requestFocusInWindow();
+    }//GEN-LAST:event_cmdBorraActionPerformed
 
     /**
      * @param args the command line arguments
